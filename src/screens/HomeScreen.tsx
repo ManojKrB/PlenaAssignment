@@ -1,10 +1,11 @@
-import {StatusBar, StyleSheet, Text, View} from 'react-native';
+import {StatusBar, StyleSheet, Text, View, Image} from 'react-native';
 import React from 'react';
+import HomeScreenHeader from '../components/HomeScreenHeader';
 
 const HomeScreen = () => {
   return (
     <View style={styles.homeScreenContainer}>
-      <View></View>
+      <HomeScreenHeader />
     </View>
   );
 };
@@ -15,13 +16,6 @@ const styles = StyleSheet.create({
   homeScreenContainer: {
     backgroundColor: '#FFFFFF',
     height: '100%',
-  },
-  headerContainer: {
-    height: 252,
-    borderWidth: 1,
-    borderColor: '#2A4BA0',
-    backgroundColor: '#2A4BA0',
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
+    marginTop: 1,
   },
 });
