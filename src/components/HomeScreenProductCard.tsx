@@ -44,6 +44,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#F8F9FB',
     display: 'flex',
     flexDirection: 'column',
+    margin: 10,
   },
   iconsContainer: {
     height: 80,

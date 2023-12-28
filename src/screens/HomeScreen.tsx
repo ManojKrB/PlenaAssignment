@@ -3,6 +3,7 @@ import React from 'react';
 import HomeScreenHeader from '../components/HomeScreenHeader';
 import HomeScreenCardSlider from '../components/HomeScreenCardSlider';
 import HomeScreenProductList from '../components/HomeScreenProductList';
+import HomeScreenBottomTabs from '../components/HomeScreenBottomTabs';
 
 const HomeScreen = () => {
   return (
@@ -10,6 +11,7 @@ const HomeScreen = () => {
       <HomeScreenHeader />
       <HomeScreenCardSlider />
       <HomeScreenProductList />
+      <HomeScreenBottomTabs />
     </View>
   );
 };
