@@ -14,21 +14,21 @@ const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        {/* <Stack.Screen
+        <Stack.Screen
           name="Home"
           component={HomeScreen}
           options={{headerShown: false}}
-        /> */}
+        />
         {/* <Stack.Screen
           name="Details"
           component={ProductDetailsScreen}
           options={{headerShown: false}}
         /> */}
-        <Stack.Screen
+        {/* <Stack.Screen
           name="Cart"
           component={CartScreen}
           options={{headerShown: false}}
-        />
+        /> */}
       </Stack.Navigator>
     </NavigationContainer>
   );

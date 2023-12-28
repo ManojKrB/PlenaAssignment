@@ -7,13 +7,13 @@ const ProductCard = () => {
       <View style={styles.iconsContainer}>
         <View>
           <Image
-            source={require('../../assets/images/wishlist-icon.png')}
+            source={require('../../../assets/images/wishlist-icon.png')}
             style={styles.wishlistIcon}
           />
         </View>
         <View>
           <Image
-            source={require('../../assets/images/product-image.png')}
+            source={require('../../../assets/images/product-image.png')}
             style={styles.productIcon}
           />
         </View>
@@ -25,7 +25,7 @@ const ProductCard = () => {
         </View>
         <View style={styles.addIconContainer}>
           <Image
-            source={require('../../assets/images/add-icon.png')}
+            source={require('../../../assets/images/add-icon.png')}
             style={styles.addIcon}
           />
         </View>

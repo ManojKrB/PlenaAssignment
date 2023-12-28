@@ -10,7 +10,7 @@ const Header = () => {
         </View>
         <View>
           <Image
-            source={require('../../assets/images/Cart-Icon.png')}
+            source={require('../../../assets/images/Cart-Icon.png')}
             style={styles.cartImage}
           />
         </View>
@@ -18,7 +18,7 @@ const Header = () => {
       <View style={styles.searchBarContainer}>
         <View>
           <Image
-            source={require('../../assets/images/Search-Icon.png')}
+            source={require('../../../assets/images/Search-Icon.png')}
             style={styles.searchImage}
           />
         </View>
@@ -37,7 +37,7 @@ const Header = () => {
             </View>
             <View>
               <Image
-                source={require('../../assets/images/arrow-Icon.png')}
+                source={require('../../../assets/images/arrow-Icon.png')}
                 style={styles.arrowIcon}
               />
             </View>
@@ -53,7 +53,7 @@ const Header = () => {
             </View>
             <View>
               <Image
-                source={require('../../assets/images/arrow-Icon.png')}
+                source={require('../../../assets/images/arrow-Icon.png')}
                 style={styles.arrowIcon}
               />
             </View>

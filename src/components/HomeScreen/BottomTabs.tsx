@@ -6,28 +6,28 @@ const BottomTabs = () => {
     <View style={styles.bottomTabContainer}>
       <View style={styles.homeContainer}>
         <Image
-          source={require('../../assets/images/home.png')}
+          source={require('../../../assets/images/home.png')}
           style={styles.homeIcon}
         />
         <Text>Home</Text>
       </View>
       <View style={styles.categoriesContainer}>
         <Image
-          source={require('../../assets/images/Category.png')}
+          source={require('../../../assets/images/Category.png')}
           style={styles.homeIcon}
         />
         <Text>Categories</Text>
       </View>
       <View style={styles.favouriteContainer}>
         <Image
-          source={require('../../assets/images/Heart.png')}
+          source={require('../../../assets/images/Heart.png')}
           style={styles.homeIcon}
         />
         <Text>Favourite</Text>
       </View>
       <View style={styles.moreContainer}>
         <Image
-          source={require('../../assets/images/more-vertical.png')}
+          source={require('../../../assets/images/more-vertical.png')}
           style={styles.homeIcon}
         />
         <Text>More</Text>

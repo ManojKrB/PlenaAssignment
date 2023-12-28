@@ -8,7 +8,7 @@ const CardSlider = () => {
         <View style={styles.cardContainerLeft}>
           <View>
             <Image
-              source={require('../../assets/images/card-image.png')}
+              source={require('../../../assets/images/card-image.png')}
               style={styles.cardIcon}
             />
           </View>
@@ -21,7 +21,7 @@ const CardSlider = () => {
         <View style={styles.cardContainer}>
           <View>
             <Image
-              source={require('../../assets/images/card-image.png')}
+              source={require('../../../assets/images/card-image.png')}
               style={styles.cardIcon}
             />
           </View>
