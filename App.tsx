@@ -19,11 +19,11 @@ const App = () => {
           component={HomeScreen}
           options={{headerShown: false}}
         /> */}
-        <Stack.Screen
+        {/* <Stack.Screen
           name="Details"
           component={ProductDetailsScreen}
           options={{headerShown: false}}
-        />
+        /> */}
         <Stack.Screen
           name="Cart"
           component={CartScreen}
