@@ -1,7 +1,7 @@
 import {ScrollView, StyleSheet, Text, View, Image} from 'react-native';
 import React from 'react';
 
-const HomeScreenCardSlider = () => {
+const CardSlider = () => {
   return (
     <View style={styles.cardSliderContainer}>
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
@@ -35,7 +35,7 @@ const HomeScreenCardSlider = () => {
   );
 };
 
-export default HomeScreenCardSlider;
+export default CardSlider;
 
 const styles = StyleSheet.create({
   cardSliderContainer: {

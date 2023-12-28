@@ -1,8 +1,8 @@
 import {ScrollView, StyleSheet, Text, View} from 'react-native';
 import React, {useEffect, useState} from 'react';
-import HomeScreenProductCard from './HomeScreenProductCard';
+import ProductCard from './ProductCard';
 
-const HomeScreenProductList = () => {
+const ProductList = () => {
   useEffect(() => {}, []);
   return (
     <View style={styles.productListContainer}>
@@ -11,18 +11,18 @@ const HomeScreenProductList = () => {
       </View>
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.cardList}>
-          <HomeScreenProductCard />
-          <HomeScreenProductCard />
-          <HomeScreenProductCard />
-          <HomeScreenProductCard />
-          <HomeScreenProductCard />
+          <ProductCard />
+          <ProductCard />
+          <ProductCard />
+          <ProductCard />
+          <ProductCard />
         </View>
       </ScrollView>
     </View>
   );
 };
 
-export default HomeScreenProductList;
+export default ProductList;
 
 const styles = StyleSheet.create({
   productListContainer: {

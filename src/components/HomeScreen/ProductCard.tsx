@@ -1,7 +1,7 @@
 import {Image, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 
-const HomeScreenProductCard = () => {
+const ProductCard = () => {
   return (
     <View style={styles.cardContainer}>
       <View style={styles.iconsContainer}>
@@ -34,7 +34,7 @@ const HomeScreenProductCard = () => {
   );
 };
 
-export default HomeScreenProductCard;
+export default ProductCard;
 
 const styles = StyleSheet.create({
   cardContainer: {

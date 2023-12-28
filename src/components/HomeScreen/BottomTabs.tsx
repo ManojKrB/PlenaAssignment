@@ -1,7 +1,7 @@
 import {Image, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 
-const HomeScreenBottomTabs = () => {
+const BottomTabs = () => {
   return (
     <View style={styles.bottomTabContainer}>
       <View style={styles.homeContainer}>
@@ -36,7 +36,7 @@ const HomeScreenBottomTabs = () => {
   );
 };
 
-export default HomeScreenBottomTabs;
+export default BottomTabs;
 
 const styles = StyleSheet.create({
   bottomTabContainer: {
