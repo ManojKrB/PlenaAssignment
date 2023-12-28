@@ -5,6 +5,7 @@ import NameRating from '../components/ProductDetailsScreen/NameRating';
 import CarouselContainer from '../components/ProductDetailsScreen/CarouselContainer';
 import PriceDiscount from '../components/ProductDetailsScreen/PriceDiscount';
 import CartBuyNow from '../components/ProductDetailsScreen/CartBuyNow';
+import ProductDetails from '../components/ProductDetailsScreen/ProductDetails';
 
 const ProductDetailsScreen = () => {
   return (
@@ -14,6 +15,7 @@ const ProductDetailsScreen = () => {
       <CarouselContainer />
       <PriceDiscount />
       <CartBuyNow />
+      <ProductDetails />
     </View>
   );
 };

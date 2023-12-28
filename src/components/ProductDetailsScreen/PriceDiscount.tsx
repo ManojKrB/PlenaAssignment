@@ -18,9 +18,7 @@ export default PriceDiscount;
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 40,
-    // borderWidth: 1,
-    // borderColor: 'red',
+    marginTop: 30,
     height: 24,
     width: 178,
     marginLeft: 20,
