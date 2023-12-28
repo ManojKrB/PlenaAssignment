@@ -3,6 +3,8 @@ import React from 'react';
 import IconsContainer from '../components/ProductDetailsScreen/IconsContainer';
 import NameRating from '../components/ProductDetailsScreen/NameRating';
 import CarouselContainer from '../components/ProductDetailsScreen/CarouselContainer';
+import PriceDiscount from '../components/ProductDetailsScreen/PriceDiscount';
+import CartBuyNow from '../components/ProductDetailsScreen/CartBuyNow';
 
 const ProductDetailsScreen = () => {
   return (
@@ -10,6 +12,8 @@ const ProductDetailsScreen = () => {
       <IconsContainer />
       <NameRating />
       <CarouselContainer />
+      <PriceDiscount />
+      <CartBuyNow />
     </View>
   );
 };
