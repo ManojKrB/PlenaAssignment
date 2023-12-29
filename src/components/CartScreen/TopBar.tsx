@@ -1,17 +1,26 @@
-import {Image, StyleSheet, Text, View} from 'react-native';
+import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
+import {useSelector} from 'react-redux';
 
-const TopBar = () => {
+interface TopBarProps {
+  props: any;
+}
+
+const TopBar: React.FC<TopBarProps> = ({props}) => {
+  const {navigation} = props;
+  const cartItems = useSelector((state: {cart: any}) => state.cart);
   return (
     <View style={styles.iconsContainer}>
-      <View>
+      <TouchableOpacity onPress={() => navigation.navigate('Home')}>
         <Image
           source={require('../../../assets/images/back-icon.png')}
           style={styles.backIcon}
         />
-      </View>
+      </TouchableOpacity>
       <View>
-        <Text style={styles.shoppingCartText}>Shopping Cart (5)</Text>
+        <Text style={styles.shoppingCartText}>
+          Shopping Cart ({cartItems.length})
+        </Text>
       </View>
     </View>
   );

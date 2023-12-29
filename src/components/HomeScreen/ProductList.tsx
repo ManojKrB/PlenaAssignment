@@ -2,19 +2,48 @@ import {FlatList, ScrollView, StyleSheet, Text, View} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import ProductCard from './ProductCard';
 import axios from 'axios';
+import {useDispatch, useSelector} from 'react-redux';
+import {addProduct} from '../../store/ProductsSlice';
 
 interface ProductListProps {
   props: any;
 }
 
 const ProductList: React.FC<ProductListProps> = ({props}) => {
-  const [productsList, setProductsList] = useState();
+  const [productsList, setProductsList] = useState([]);
+  const dispatch = useDispatch();
+
+  const finalProductList = useSelector(
+    (state: {product: any}) => state.product,
+  );
+  // console.log('final product list are ', finalProductList);
+
+  const cartItems = useSelector((state: {cart: any}) => state.cart);
 
   useEffect(() => {
-    axios
-      .get(`https://dummyjson.com/products`)
-      .then(res => setProductsList(res?.data?.products));
+    axios.get(`https://dummyjson.com/products`).then(res => {
+      if (res?.data?.products) {
+        setProductsList(res.data.products);
+      }
+    });
   }, []);
+
+  useEffect(() => {
+    const updatedProductList = productsList?.map((element: any) => {
+      return {...element, quantity: 0};
+    });
+
+    const productsToAdd = updatedProductList?.filter(
+      item =>
+        !finalProductList.find(
+          (existingItem: {id: any}) => existingItem.id === item.id,
+        ),
+    );
+
+    productsToAdd?.map(item => {
+      dispatch(addProduct(item));
+    });
+  }, [productsList, finalProductList, dispatch]);
 
   return (
     <View style={styles.productListContainer}>
@@ -23,20 +52,20 @@ const ProductList: React.FC<ProductListProps> = ({props}) => {
       </View>
 
       <FlatList
-        data={productsList}
+        data={finalProductList}
         numColumns={2}
         renderItem={({item}) => (
           <View style={styles.cardList}>
             <ProductCard
-              price={item?.price}
-              title={item?.title}
-              thumbnail={item?.thumbnail}
-              id={item?.id}
+              price={(item as any)?.price}
+              title={(item as any)?.title}
+              thumbnail={(item as any)?.thumbnail}
+              id={(item as any)?.id}
               props={props}
             />
           </View>
         )}
-        keyExtractor={item => item.id}
+        keyExtractor={item => (item as any).id}
       />
     </View>
   );

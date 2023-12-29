@@ -1,5 +1,7 @@
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
+import {useDispatch} from 'react-redux';
+import {addToCart} from '../../store/CartSlice';
 
 interface ProductCardProps {
   price: number;
@@ -17,6 +19,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
   props,
 }) => {
   const {navigation} = props;
+  const dispatch = useDispatch();
   return (
     <TouchableOpacity
       style={styles.cardContainer}
@@ -43,14 +46,17 @@ const ProductCard: React.FC<ProductCardProps> = ({
           <Text style={styles.price}>{price}</Text>
           <Text style={styles.name}>{title}</Text>
         </View>
-        <TouchableOpacity
-          style={styles.addIconContainer}
-          onPress={() => console.log('plus icon')}>
-          <Image
-            source={require('../../../assets/images/add-icon.png')}
-            style={styles.addIcon}
-          />
-        </TouchableOpacity>
+
+        <View>
+          <TouchableOpacity
+            style={styles.addIconContainer}
+            onPress={() => dispatch(addToCart(id))}>
+            <Image
+              source={require('../../../assets/images/add-icon.png')}
+              style={styles.addIcon}
+            />
+          </TouchableOpacity>
+        </View>
       </View>
     </TouchableOpacity>
   );
@@ -89,24 +95,30 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
   },
   productDescriptionContainer: {
-    width: 128,
+    width: 160,
     height: 84,
     display: 'flex',
     flexDirection: 'row',
     marginLeft: 10,
+    // borderWidth: 1,
+    // borderColor: 'blue',
   },
   productDescription: {
-    width: '90%',
+    width: '70%',
     height: '100%',
     display: 'flex',
     alignSelf: 'flex-end',
     justifyContent: 'flex-end',
+    // marginBottom: 10,
   },
   addIconContainer: {
     height: '100%',
     display: 'flex',
     justifyContent: 'flex-end',
-    marginRight: 5,
+    marginRight: 15,
+    // borderWidth: 1,
+    // borderColor: 'red',
+    flex: 1,
   },
   price: {
     height: 20,
@@ -128,5 +140,6 @@ const styles = StyleSheet.create({
     width: 24,
     height: 24,
     alignSelf: 'flex-end',
+    marginBottom: 10,
   },
 });

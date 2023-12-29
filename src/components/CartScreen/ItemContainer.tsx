@@ -1,18 +1,24 @@
 import {StyleSheet, Text, View, Image} from 'react-native';
 import React from 'react';
 
-const ItemContainer = () => {
+interface ItemContainerProps {
+  item: any;
+}
+
+const ItemContainer: React.FC<ItemContainerProps> = ({item}) => {
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
         <Image
-          source={require('../../../assets/images/product-image-black.png')}
+          // source={require('../../../assets/images/product-image-black.png')}
+          source={{uri: item?.thumbnail}}
           style={styles.productImage}
+          resizeMode="contain"
         />
       </View>
       <View style={styles.namePriceContainer}>
-        <Text style={styles.name}>Bananas</Text>
-        <Text style={styles.price}>$7.90</Text>
+        <Text style={styles.name}>{item?.title}</Text>
+        <Text style={styles.price}>$ {item?.price}</Text>
       </View>
       <View style={styles.quantityContainer}>
         <View>

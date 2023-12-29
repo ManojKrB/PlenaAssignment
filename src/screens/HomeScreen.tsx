@@ -12,7 +12,7 @@ type propTypes = NativeStackScreenProps<stackScreens, 'Home'>;
 const HomeScreen = (props: propTypes) => {
   return (
     <View style={styles.homeScreenContainer}>
-      <Header />
+      <Header props={props} />
       <CardSlider />
       <ProductList props={props} />
       <BottomTabs />

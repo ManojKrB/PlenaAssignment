@@ -1,19 +1,24 @@
-import {Image, StyleSheet, Text, View} from 'react-native';
+import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
 
-const Header = () => {
+interface HeaderProps {
+  props: any;
+}
+
+const Header: React.FC<HeaderProps> = ({props}) => {
+  const {navigation} = props;
   return (
     <View style={styles.headerContainer}>
       <View style={styles.nameAndIconContainer}>
         <View>
           <Text style={styles.name}>Hey, Rahul</Text>
         </View>
-        <View>
+        <TouchableOpacity onPress={() => navigation.navigate('Cart')}>
           <Image
             source={require('../../../assets/images/Cart-Icon.png')}
             style={styles.cartImage}
           />
-        </View>
+        </TouchableOpacity>
       </View>
       <View style={styles.searchBarContainer}>
         <View>
