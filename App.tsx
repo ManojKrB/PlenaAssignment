@@ -8,27 +8,33 @@ import HomeScreen from './src/screens/HomeScreen';
 import ProductDetailsScreen from './src/screens/ProductDetailsScreen';
 import CartScreen from './src/screens/CartScreen';
 
-const Stack = createNativeStackNavigator();
+export type stackScreens = {
+  Home: undefined;
+  Details: {id: number};
+  Cart: undefined;
+};
+
+const Stack = createNativeStackNavigator<stackScreens>();
 
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator initialRouteName="Home">
         <Stack.Screen
           name="Home"
           component={HomeScreen}
           options={{headerShown: false}}
         />
-        {/* <Stack.Screen
+        <Stack.Screen
           name="Details"
           component={ProductDetailsScreen}
           options={{headerShown: false}}
-        /> */}
-        {/* <Stack.Screen
+        />
+        <Stack.Screen
           name="Cart"
           component={CartScreen}
           options={{headerShown: false}}
-        /> */}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

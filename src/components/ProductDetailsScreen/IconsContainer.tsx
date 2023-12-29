@@ -1,15 +1,20 @@
-import {Image, StyleSheet, Text, View} from 'react-native';
+import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
 
-const IconsContainer = () => {
+interface IconsContainerProps {
+  props: any;
+}
+
+const IconsContainer: React.FC<IconsContainerProps> = ({props}) => {
+  const {navigation} = props;
   return (
     <View style={styles.iconsContainer}>
-      <View>
+      <TouchableOpacity onPress={() => navigation.navigate('Home')}>
         <Image
           source={require('../../../assets/images/back-icon.png')}
           style={styles.backIcon}
         />
-      </View>
+      </TouchableOpacity>
       <View>
         <Image
           source={require('../../../assets/images/cart-icon-black.png')}

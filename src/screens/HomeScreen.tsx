@@ -4,13 +4,17 @@ import Header from '../components/HomeScreen/Header';
 import CardSlider from '../components/HomeScreen/CardSlider';
 import ProductList from '../components/HomeScreen/ProductList';
 import BottomTabs from '../components/HomeScreen/BottomTabs';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import {stackScreens} from '../../App';
 
-const HomeScreen = () => {
+type propTypes = NativeStackScreenProps<stackScreens, 'Home'>;
+
+const HomeScreen = (props: propTypes) => {
   return (
     <View style={styles.homeScreenContainer}>
       <Header />
       <CardSlider />
-      <ProductList />
+      <ProductList props={props} />
       <BottomTabs />
     </View>
   );

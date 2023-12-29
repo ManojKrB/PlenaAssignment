@@ -1,36 +1,58 @@
-import {Image, StyleSheet, Text, View} from 'react-native';
+import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
 
-const ProductCard = () => {
+interface ProductCardProps {
+  price: number;
+  title: string;
+  thumbnail: string;
+  id: number;
+  props: any;
+}
+
+const ProductCard: React.FC<ProductCardProps> = ({
+  price,
+  title,
+  thumbnail,
+  id,
+  props,
+}) => {
+  const {navigation} = props;
   return (
-    <View style={styles.cardContainer}>
+    <TouchableOpacity
+      style={styles.cardContainer}
+      onPress={() => {
+        navigation.navigate('Details', {id: id});
+      }}>
       <View style={styles.iconsContainer}>
-        <View>
+        <TouchableOpacity onPress={() => console.log('heart ison clicked')}>
           <Image
             source={require('../../../assets/images/wishlist-icon.png')}
             style={styles.wishlistIcon}
           />
-        </View>
+        </TouchableOpacity>
         <View>
           <Image
-            source={require('../../../assets/images/product-image.png')}
+            // source={require('../../../assets/images/product-image.png')}
+            source={{uri: thumbnail}}
             style={styles.productIcon}
           />
         </View>
       </View>
       <View style={styles.productDescriptionContainer}>
         <View style={styles.productDescription}>
-          <Text style={styles.price}>$325</Text>
-          <Text style={styles.name}>Clown Tang.H03</Text>
+          <Text style={styles.price}>{price}</Text>
+          <Text style={styles.name}>{title}</Text>
         </View>
-        <View style={styles.addIconContainer}>
+        <TouchableOpacity
+          style={styles.addIconContainer}
+          onPress={() => console.log('plus icon')}>
           <Image
             source={require('../../../assets/images/add-icon.png')}
             style={styles.addIcon}
           />
-        </View>
+        </TouchableOpacity>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
@@ -45,12 +67,14 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'column',
     margin: 10,
+    // borderWidth: 1,
+    // borderColor: 'red',
   },
   iconsContainer: {
     height: 80,
     marginTop: 20,
     display: 'flex',
-    flexDirection: 'row',
+    flexDirection: 'column',
   },
   wishlistIcon: {
     width: 14.55,
@@ -59,9 +83,10 @@ const styles = StyleSheet.create({
   },
   productIcon: {
     height: 68,
-    width: 68,
-    marginTop: 10,
+    width: 130,
     marginLeft: 10,
+    position: 'relative',
+    resizeMode: 'contain',
   },
   productDescriptionContainer: {
     width: 128,

@@ -1,14 +1,19 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 
-const PriceDiscount = () => {
+interface PriceDiscountProps {
+  price: number;
+  discount: number;
+}
+
+const PriceDiscount: React.FC<PriceDiscountProps> = ({price, discount}) => {
   return (
     <View style={styles.container}>
       <View>
-        <Text style={styles.price}>$34.70/KG</Text>
+        <Text style={styles.price}>$ {price}</Text>
       </View>
       <View style={styles.discountContainer}>
-        <Text style={styles.discount}>$22.04 OFF</Text>
+        <Text style={styles.discount}>{discount}% OFF</Text>
       </View>
     </View>
   );

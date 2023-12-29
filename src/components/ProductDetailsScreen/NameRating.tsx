@@ -2,14 +2,19 @@ import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import StarRating from './StartRating';
 
-const NameRating = () => {
+interface NameRatingProps {
+  title: string;
+  rating: number;
+}
+
+const NameRating: React.FC<NameRatingProps> = ({title, rating}) => {
   return (
     <View style={styles.nameRatingContainer}>
       <View>
-        <Text style={styles.productName}>Top Orange</Text>
+        <Text style={styles.productName}>{title}</Text>
       </View>
       <View>
-        <StarRating rating={4.5} />
+        <StarRating rating={rating} />
       </View>
     </View>
   );

@@ -1,23 +1,43 @@
-import {ScrollView, StyleSheet, Text, View} from 'react-native';
+import {FlatList, ScrollView, StyleSheet, Text, View} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import ProductCard from './ProductCard';
+import axios from 'axios';
 
-const ProductList = () => {
-  useEffect(() => {}, []);
+interface ProductListProps {
+  props: any;
+}
+
+const ProductList: React.FC<ProductListProps> = ({props}) => {
+  const [productsList, setProductsList] = useState();
+
+  useEffect(() => {
+    axios
+      .get(`https://dummyjson.com/products`)
+      .then(res => setProductsList(res?.data?.products));
+  }, []);
+
   return (
     <View style={styles.productListContainer}>
       <View>
         <Text style={styles.recommendedText}>Recommended</Text>
       </View>
-      <ScrollView showsVerticalScrollIndicator={false}>
-        <View style={styles.cardList}>
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-        </View>
-      </ScrollView>
+
+      <FlatList
+        data={productsList}
+        numColumns={2}
+        renderItem={({item}) => (
+          <View style={styles.cardList}>
+            <ProductCard
+              price={item?.price}
+              title={item?.title}
+              thumbnail={item?.thumbnail}
+              id={item?.id}
+              props={props}
+            />
+          </View>
+        )}
+        keyExtractor={item => item.id}
+      />
     </View>
   );
 };

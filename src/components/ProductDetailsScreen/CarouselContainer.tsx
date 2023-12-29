@@ -4,7 +4,11 @@ import Carousel from 'react-native-reanimated-carousel';
 import SlideItem from './SlideItem';
 import Pagination from './Pagination';
 
-const CarouselContainer = () => {
+interface CarouselContainerProps {
+  images: string[];
+}
+
+const CarouselContainer: React.FC<CarouselContainerProps> = ({images}) => {
   const scrollX = useRef(new Animated.Value(0)).current;
 
   const handleScroll = (event: any) => {
@@ -38,28 +42,13 @@ const CarouselContainer = () => {
           pagingEnabled
           snapToAlignment="center"
           showsHorizontalScrollIndicator={false}
-          data={[
-            'https://i.dummyjson.com/data/products/1/1.jpg',
-            'https://i.dummyjson.com/data/products/1/2.jpg',
-            'https://i.dummyjson.com/data/products/1/3.jpg',
-            'https://i.dummyjson.com/data/products/1/4.jpg',
-            'https://i.dummyjson.com/data/products/1/thumbnail.jpg',
-          ]}
+          data={images}
           renderItem={({item}) => <SlideItem item={item} />}
           onScroll={handleScroll}
         />
       </View>
       <View style={styles.pagination}>
-        <Pagination
-          data={[
-            'https://i.dummyjson.com/data/products/1/1.jpg',
-            'https://i.dummyjson.com/data/products/1/2.jpg',
-            'https://i.dummyjson.com/data/products/1/3.jpg',
-            'https://i.dummyjson.com/data/products/1/4.jpg',
-            'https://i.dummyjson.com/data/products/1/thumbnail.jpg',
-          ]}
-          scrollX={scrollX}
-        />
+        <Pagination data={images} scrollX={scrollX} />
       </View>
     </View>
   );

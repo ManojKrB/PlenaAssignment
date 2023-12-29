@@ -1,14 +1,15 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 
-const ProductDetails = () => {
+interface ProductDetailsProps {
+  description: string;
+}
+
+const ProductDetails: React.FC<ProductDetailsProps> = ({description}) => {
   return (
     <View style={styles.container}>
       <Text style={styles.detailsText}>Details</Text>
-      <Text style={styles.productDescription}>
-        Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
-        Nullam quis risus eget urna mollis ornare vel eu leo.
-      </Text>
+      <Text style={styles.productDescription}>{description}</Text>
     </View>
   );
 };
