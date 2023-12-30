@@ -32,11 +32,11 @@ const CartScreen = (props: propTypes) => {
         <TopBar props={props} />
         <View style={{marginTop: 40}}>
           {cartItems &&
-            cartItems?.map((item: any) => (
-              <>
+            cartItems?.map((item: any, index: number) => (
+              <React.Fragment key={index}>
                 <ItemContainer item={item} />
                 <View style={styles.lineBreak} />
-              </>
+              </React.Fragment>
             ))}
         </View>
         <View style={styles.editTextContainer}>
