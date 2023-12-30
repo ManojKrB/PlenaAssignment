@@ -1,12 +1,22 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
+import {useDispatch} from 'react-redux';
+import {addToCart} from '../../store/CartSlice';
 
-const CartBuyNow = () => {
+interface CartBuyNowProps {
+  product: any;
+}
+
+const CartBuyNow: React.FC<CartBuyNowProps> = ({product}) => {
+  const dispatch = useDispatch();
+
   return (
     <View style={styles.container}>
-      <View style={styles.addToCartContainer}>
+      <TouchableOpacity
+        onPress={() => dispatch(addToCart(product))}
+        style={styles.addToCartContainer}>
         <Text style={styles.addToCartText}>Add To Cart</Text>
-      </View>
+      </TouchableOpacity>
       <View style={styles.buyNowContainer}>
         <Text style={styles.buyNowText}>Buy Now</Text>
       </View>

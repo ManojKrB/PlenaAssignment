@@ -1,4 +1,11 @@
-import {FlatList, ScrollView, StyleSheet, Text, View} from 'react-native';
+import {
+  FlatList,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+  ActivityIndicator,
+} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import ProductCard from './ProductCard';
 import axios from 'axios';
@@ -11,12 +18,12 @@ interface ProductListProps {
 
 const ProductList: React.FC<ProductListProps> = ({props}) => {
   const [productsList, setProductsList] = useState([]);
+  const [loading, setLoading] = useState(true);
   const dispatch = useDispatch();
 
   const finalProductList = useSelector(
     (state: {product: any}) => state.product,
   );
-  // console.log('final product list are ', finalProductList);
 
   const cartItems = useSelector((state: {cart: any}) => state.cart);
 
@@ -24,6 +31,7 @@ const ProductList: React.FC<ProductListProps> = ({props}) => {
     axios.get(`https://dummyjson.com/products`).then(res => {
       if (res?.data?.products) {
         setProductsList(res.data.products);
+        setLoading(false);
       }
     });
   }, []);
@@ -44,6 +52,14 @@ const ProductList: React.FC<ProductListProps> = ({props}) => {
       dispatch(addProduct(item));
     });
   }, [productsList, finalProductList, dispatch]);
+
+  if (loading) {
+    return (
+      <View style={styles.loadingContainer}>
+        <ActivityIndicator size="large" color="#0000ff" />
+      </View>
+    );
+  }
 
   return (
     <View style={styles.productListContainer}>
@@ -70,8 +86,6 @@ export default ProductList;
 const styles = StyleSheet.create({
   productListContainer: {
     margin: 20,
-    // borderWidth: 1,
-    // borderColor: 'red',
     flex: 1,
   },
   recommendedText: {
@@ -87,5 +101,10 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     flexWrap: 'wrap',
+  },
+  loadingContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });

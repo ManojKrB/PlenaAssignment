@@ -40,22 +40,36 @@ export default BottomTabs;
 
 const styles = StyleSheet.create({
   bottomTabContainer: {
-    // borderWidth: 1,
-    // borderColor: 'red',
     width: '100%',
-    height: 103,
+    height: 70,
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-evenly',
     alignItems: 'flex-end',
     paddingBottom: 10,
   },
-  homeContainer: {},
+  homeContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   homeIcon: {
     width: 24,
     height: 24,
   },
-  categoriesContainer: {},
-  favouriteContainer: {},
-  moreContainer: {},
+  categoriesContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  favouriteContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  moreContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 });

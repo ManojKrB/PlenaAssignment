@@ -21,15 +21,11 @@ const styles = StyleSheet.create({
     width: 300,
     marginRight: 20,
     alignSelf: 'center',
-    // borderWidth: 1,
-    // borderColor: 'red',
   },
   container: {
     width: width,
     height: 150,
     position: 'relative',
-    // borderWidth: 1,
-    // borderColor: 'red',
   },
 });
 

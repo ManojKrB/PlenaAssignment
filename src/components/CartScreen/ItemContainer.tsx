@@ -13,15 +13,14 @@ const ItemContainer: React.FC<ItemContainerProps> = ({item}) => {
     <View style={styles.container}>
       <View style={styles.imageContainer}>
         <Image
-          // source={require('../../../assets/images/product-image-black.png')}
           source={{uri: item?.thumbnail}}
           style={styles.productImage}
           resizeMode="contain"
         />
       </View>
       <View style={styles.namePriceContainer}>
-        <Text style={styles.name}>{item?.title}</Text>
-        <Text style={styles.price}>$ {item?.price}</Text>
+        <Text style={styles.name}>{item?.title!}</Text>
+        <Text style={styles.price}>$ {item?.price!}</Text>
       </View>
       <View style={styles.quantityContainer}>
         <TouchableOpacity
@@ -38,7 +37,7 @@ const ItemContainer: React.FC<ItemContainerProps> = ({item}) => {
           />
         </TouchableOpacity>
         <View style={styles.quantity}>
-          <Text style={styles.quantityText}>{item.quantity}</Text>
+          <Text style={styles.quantityText}>{item.quantity || 1}</Text>
         </View>
         <TouchableOpacity
           onPress={() => {
@@ -58,7 +57,6 @@ export default ItemContainer;
 
 const styles = StyleSheet.create({
   container: {
-    // marginTop: 40,
     width: '90%' || 325,
     height: 42,
     display: 'flex',
@@ -79,6 +77,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'column',
     marginLeft: 30,
+    width: 150,
   },
   name: {
     width: 57,

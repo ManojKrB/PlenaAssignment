@@ -36,7 +36,6 @@ const styles = StyleSheet.create({
   },
   container: {
     position: 'absolute',
-    // bottom: 50,
     flexDirection: 'row',
     marginLeft: 15,
   },

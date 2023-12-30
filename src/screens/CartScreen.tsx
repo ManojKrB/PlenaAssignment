@@ -15,8 +15,6 @@ const CartScreen = (props: propTypes) => {
   );
 
   const cartItems = useSelector((state: {cart: any}) => state.cart);
-  // console.log('final is  ', finalProductList);
-  // console.log('cart is ', cartItems);
 
   const getTotal = () => {
     let total = 0;
@@ -111,8 +109,6 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 30,
     borderTopLeftRadius: 30,
     backgroundColor: '#F8F9FB',
-    // borderWidth: 1,
-    // borderColor: 'red',
   },
   priceDistributionContainer: {},
   subtotalContainer: {

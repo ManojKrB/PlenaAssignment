@@ -1,5 +1,5 @@
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import {useDispatch} from 'react-redux';
 import {addToCart} from '../../store/CartSlice';
 
@@ -10,6 +10,8 @@ interface ProductCardProps {
 
 const ProductCard: React.FC<ProductCardProps> = ({item, props}) => {
   const {navigation} = props;
+  const [isHeartClicked, setIsHeartClicked] = useState(false);
+
   const dispatch = useDispatch();
   return (
     <TouchableOpacity
@@ -18,18 +20,18 @@ const ProductCard: React.FC<ProductCardProps> = ({item, props}) => {
         navigation.navigate('Details', {id: item.id});
       }}>
       <View style={styles.iconsContainer}>
-        <TouchableOpacity onPress={() => console.log('heart ison clicked')}>
+        <TouchableOpacity onPress={() => setIsHeartClicked(!isHeartClicked)}>
           <Image
-            source={require('../../../assets/images/wishlist-icon.png')}
+            source={
+              !isHeartClicked
+                ? require('../../../assets/images/wishlist-icon.png')
+                : require('../../../assets/images/pink-heart.png')
+            }
             style={styles.wishlistIcon}
           />
         </TouchableOpacity>
         <View>
-          <Image
-            // source={require('../../../assets/images/product-image.png')}
-            source={{uri: item.thumbnail}}
-            style={styles.productIcon}
-          />
+          <Image source={{uri: item.thumbnail}} style={styles.productIcon} />
         </View>
       </View>
       <View style={styles.productDescriptionContainer}>
@@ -64,8 +66,6 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'column',
     margin: 10,
-    // borderWidth: 1,
-    // borderColor: 'red',
   },
   iconsContainer: {
     height: 80,
@@ -91,8 +91,6 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     marginLeft: 10,
-    // borderWidth: 1,
-    // borderColor: 'blue',
   },
   productDescription: {
     width: '70%',
@@ -100,15 +98,12 @@ const styles = StyleSheet.create({
     display: 'flex',
     alignSelf: 'flex-end',
     justifyContent: 'flex-end',
-    // marginBottom: 10,
   },
   addIconContainer: {
     height: '100%',
     display: 'flex',
     justifyContent: 'flex-end',
     marginRight: 15,
-    // borderWidth: 1,
-    // borderColor: 'red',
     flex: 1,
   },
   price: {

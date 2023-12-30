@@ -15,12 +15,12 @@ const IconsContainer: React.FC<IconsContainerProps> = ({props}) => {
           style={styles.backIcon}
         />
       </TouchableOpacity>
-      <View>
+      <TouchableOpacity onPress={() => navigation.navigate('Cart')}>
         <Image
           source={require('../../../assets/images/cart-icon-black.png')}
           style={styles.cartIcon}
         />
-      </View>
+      </TouchableOpacity>
     </View>
   );
 };
