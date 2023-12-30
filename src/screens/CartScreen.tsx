@@ -18,15 +18,9 @@ const CartScreen = (props: propTypes) => {
   // console.log('final is  ', finalProductList);
   // console.log('cart is ', cartItems);
 
-  const addedItems = finalProductList?.filter((obj: {id: any}) =>
-    cartItems?.some((itemId: any) => itemId === obj?.id),
-  );
-
-  console.log('added items are ', addedItems);
-
   const getTotal = () => {
     let total = 0;
-    addedItems?.map((item: {quantity: number; price: number}) => {
+    cartItems?.map((item: {quantity: number; price: number}) => {
       total = total + item.quantity * item.price;
     });
     return total;
@@ -37,8 +31,8 @@ const CartScreen = (props: propTypes) => {
       <View style={styles.container}>
         <TopBar props={props} />
         <View style={{marginTop: 40}}>
-          {addedItems &&
-            addedItems?.map((item: any) => (
+          {cartItems &&
+            cartItems?.map((item: any) => (
               <>
                 <ItemContainer item={item} />
                 <View style={styles.lineBreak} />
@@ -56,11 +50,15 @@ const CartScreen = (props: propTypes) => {
             </View>
             <View style={styles.subtotalContainer}>
               <Text style={styles.subtotalText}>Delivery</Text>
-              <Text style={styles.subtotalPrice}>$2.00</Text>
+              <Text style={styles.subtotalPrice}>
+                $ {getTotal() > 0 ? 2 : 0}
+              </Text>
             </View>
             <View style={styles.subtotalContainer}>
               <Text style={styles.subtotalText}>Total</Text>
-              <Text style={styles.subtotalPrice}>$37.96</Text>
+              <Text style={styles.subtotalPrice}>
+                $ {getTotal() > 0 ? getTotal() + 2 : 0}
+              </Text>
             </View>
           </View>
           <View style={styles.proceedContainer}>

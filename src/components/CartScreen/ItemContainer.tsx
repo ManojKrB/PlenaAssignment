@@ -1,11 +1,14 @@
-import {StyleSheet, Text, View, Image} from 'react-native';
+import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 import React from 'react';
+import {useDispatch} from 'react-redux';
+import {addToCart, decrementItem, deleteItem} from '../../store/CartSlice';
 
 interface ItemContainerProps {
   item: any;
 }
 
 const ItemContainer: React.FC<ItemContainerProps> = ({item}) => {
+  const dispatch = useDispatch();
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
@@ -21,21 +24,31 @@ const ItemContainer: React.FC<ItemContainerProps> = ({item}) => {
         <Text style={styles.price}>$ {item?.price}</Text>
       </View>
       <View style={styles.quantityContainer}>
-        <View>
+        <TouchableOpacity
+          onPress={() => {
+            if (item?.quantity > 1) {
+              dispatch(decrementItem(item));
+            } else {
+              dispatch(deleteItem(item.id));
+            }
+          }}>
           <Image
             source={require('../../../assets/images/decrement.png')}
             style={styles.decrementIcon}
           />
-        </View>
+        </TouchableOpacity>
         <View style={styles.quantity}>
-          <Text style={styles.quantityText}>1</Text>
+          <Text style={styles.quantityText}>{item.quantity}</Text>
         </View>
-        <View>
+        <TouchableOpacity
+          onPress={() => {
+            dispatch(addToCart(item));
+          }}>
           <Image
             source={require('../../../assets/images/increment.png')}
             style={styles.decrementIcon}
           />
-        </View>
+        </TouchableOpacity>
       </View>
     </View>
   );

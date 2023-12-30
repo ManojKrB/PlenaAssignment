@@ -56,13 +56,7 @@ const ProductList: React.FC<ProductListProps> = ({props}) => {
         numColumns={2}
         renderItem={({item}) => (
           <View style={styles.cardList}>
-            <ProductCard
-              price={(item as any)?.price}
-              title={(item as any)?.title}
-              thumbnail={(item as any)?.thumbnail}
-              id={(item as any)?.id}
-              props={props}
-            />
+            <ProductCard item={item} props={props} />
           </View>
         )}
         keyExtractor={item => (item as any).id}

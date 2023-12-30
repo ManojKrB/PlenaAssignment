@@ -4,27 +4,18 @@ import {useDispatch} from 'react-redux';
 import {addToCart} from '../../store/CartSlice';
 
 interface ProductCardProps {
-  price: number;
-  title: string;
-  thumbnail: string;
-  id: number;
+  item: any;
   props: any;
 }
 
-const ProductCard: React.FC<ProductCardProps> = ({
-  price,
-  title,
-  thumbnail,
-  id,
-  props,
-}) => {
+const ProductCard: React.FC<ProductCardProps> = ({item, props}) => {
   const {navigation} = props;
   const dispatch = useDispatch();
   return (
     <TouchableOpacity
       style={styles.cardContainer}
       onPress={() => {
-        navigation.navigate('Details', {id: id});
+        navigation.navigate('Details', {id: item.id});
       }}>
       <View style={styles.iconsContainer}>
         <TouchableOpacity onPress={() => console.log('heart ison clicked')}>
@@ -36,21 +27,21 @@ const ProductCard: React.FC<ProductCardProps> = ({
         <View>
           <Image
             // source={require('../../../assets/images/product-image.png')}
-            source={{uri: thumbnail}}
+            source={{uri: item.thumbnail}}
             style={styles.productIcon}
           />
         </View>
       </View>
       <View style={styles.productDescriptionContainer}>
         <View style={styles.productDescription}>
-          <Text style={styles.price}>{price}</Text>
-          <Text style={styles.name}>{title}</Text>
+          <Text style={styles.price}>{item?.price}</Text>
+          <Text style={styles.name}>{item?.title}</Text>
         </View>
 
         <View>
           <TouchableOpacity
             style={styles.addIconContainer}
-            onPress={() => dispatch(addToCart(id))}>
+            onPress={() => dispatch(addToCart(item))}>
             <Image
               source={require('../../../assets/images/add-icon.png')}
               style={styles.addIcon}
